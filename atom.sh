@@ -1,0 +1,1 @@
+atom --new-instance -a .
