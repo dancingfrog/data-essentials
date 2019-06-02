@@ -17,19 +17,6 @@ songs = {
 get(songs,'John')
 
 import pandas as pd
-songs2 = pd.Series([ 145, 142, 38, 13 ], name='counts')
-
-songs2
-
-songs2.index
-
-songs3 = pd.Series([ 145, 142, 38, 13 ],
-    name='Song_Counts',
-    index=[ 'John', 'Paul', 'George', 'Ringo' ]);
-
-songs3.index
-
-songs3
 
 class DataFoo:
     pass
@@ -42,3 +29,19 @@ ringo = pd.Series(
 ringo
 
 ringo.index
+
+songs2 = pd.Series([ 145, 142, 38, 13 ], name='counts')
+
+songs2
+
+songs2.index
+
+songs3 = pd.Series([ 145, 142, 38, 13, None ],
+    name='Song_Counts',
+    index=[ 'John', 'Paul', 'George', 'Ringo', '5th Beatle' ])
+
+songs3.index
+
+songs3
+
+songs3.count()
