@@ -45,3 +45,17 @@ songs3.index
 songs3
 
 songs3.count()
+
+songs3.median()
+
+mask = songs3 > songs3.median()
+
+mask
+
+mask2 = songs3 > 10
+
+mask2
+
+songs3[mask]
+
+songs3[mask2]
