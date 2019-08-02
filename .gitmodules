@@ -1,0 +1,3 @@
+[submodule "docker-hadoop"]
+	path = docker-hadoop
+	url = https://github.com/Real-Currents/docker-hadoop.git
