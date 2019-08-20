@@ -1,4 +1,5 @@
-# conda install -f -y -q -n py37 -c conda-forge --file requirements.txt
+#conda activate data_essentials
+#conda install -f -y -q -n py37 -c conda-forge --file requirements.txt
 
 # IPython/Jupyter
 conda install -y ipykernel
