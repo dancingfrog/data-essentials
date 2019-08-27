@@ -1,0 +1,6 @@
+.DS_Store
+.Rhistory
+data
+docker-*
+hadoop
+protobuf
