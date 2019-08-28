@@ -1,3 +1,7 @@
+unset PYTHONPATH
+
+conda activate data.essentials
+
 conda update -n base -c defaults conda
 #conda install -f -y -q -n py37 -c conda-forge --file requirements.txt
 #conda install --force-reinstall -y conda-build
