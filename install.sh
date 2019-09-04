@@ -13,7 +13,7 @@ export rprofile="$(echo $(r  -f example.r  | grep '/Rprofile') | grep -o '[A-Z|a
 sudo bash -c "echo 'options(repos = list(CRAN=\"http://cran.rstudio.com/\"))' >> $rprofile"
 
 # Extra modules
-conda install --force-reinstall -y matplotlib pandas geopandas koalas 'pyspark>=2.4' xeus xeus-python notebook -c conda-forge
+conda install --force-reinstall -y matplotlib pandas geopandas koalas 'pyspark>=2.4' notebook -c conda-forge
 
 # IPython/Jupyter
 conda install -y ipykernel
