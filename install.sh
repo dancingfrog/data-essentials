@@ -11,9 +11,10 @@ conda update -y -c defaults conda
 # Update R profile
 export rprofile="$(echo $(r  -f example.r  | grep '/Rprofile') | grep -o '[A-Z|a-z|\/][A-Z|a-z|0-9|\:|\/|\.|\_]*')"
 sudo bash -c "echo 'options(repos = list(CRAN=\"http://cran.rstudio.com/\"))' >> $rprofile"
+Rscript -e 'update.packages(repos="http://cran.rstudio.com/", ask=FALSE, checkBuilt=TRUE)'
 
 # Extra modules
-conda install --force-reinstall -y matplotlib pandas geopandas koalas 'pyspark>=2.4' notebook -c conda-forge
+conda install --force-reinstall -y cython cartopy matplotlib pandas geopandas koalas 'pyspark>=2.4' notebook -c conda-forge
 
 # IPython/Jupyter
 conda install -y ipykernel
@@ -28,4 +29,21 @@ python -m pip install 'python-language-server[all]'
 Rscript -e 'install.packages("languageserver")'
 Rscript -e 'install.packages("IRkernel")'
 Rscript -e 'IRkernel::installspec()'
+Rscript -e 'install.packages("DBI")'
+Rscript -e 'install.packages("RPostgreSQL")'
+Rscript -e 'install.packages("ggmap")'
+Rscript -e 'install.packages("lattice")'
+Rscript -e 'install.packages("maptools")'
+Rscript -e 'install.packages("maps")'
+Rscript -e 'install.packages("mapdata")'
+Rscript -e 'install.packages("marmap")'
+Rscript -e 'install.packages("raster")'
+# During install on OS X, Ctrl+Z, then: install_name_tool -add_rpath /usr/lib /usr/local/lib/R/3.6/site-library/00LOCK-sf/00new/sf/libs/sf.so && fg
+Rscript -e 'install.packages("sf")'
+# During install on OS X, Ctrl+Z, then: install_name_tool -add_rpath /usr/lib /usr/local/lib/R/3.6/site-library/00LOCK-png/00new/png/libs/png.so && fg
+Rscript -e 'install.packages("sp")'
+# During install on OS X, Ctrl+Z, then: install_name_tool -add_rpath /usr/lib /usr/local/lib/R/3.6/site-library/00LOCK-rgdal/00new/rgdal/libs/rgdal.so && fg
+Rscript -e 'install.packages("rgdal")'
+# During install on OS X, Ctrl+Z, then: install_name_tool -add_rpath /usr/lib /usr/local/lib/R/3.6/site-library/00LOCK-rgeos/00new/rgeos/libs/rgeos.so && fg
+Rscript -e 'install.packages("rgeos")'
 jupyter kernelspec list
