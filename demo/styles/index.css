@@ -1,0 +1,15 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.axis>* {
+    font-size: 12px;
+    fill: none;
+    shape-rendering: crispEdges;
+}
+
+.bar {
+    color: grey;
+    fill: grey;
+}

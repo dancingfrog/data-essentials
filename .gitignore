@@ -1,7 +1,11 @@
 .DS_Store
+.RData
 .Rhistory
 .cph_*
+app.js
+index.html
 data
 docker-*
 hadoop
+node_modules
 protobuf
