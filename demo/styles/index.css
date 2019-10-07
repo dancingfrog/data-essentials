@@ -13,3 +13,22 @@ html, body {
     color: grey;
     fill: grey;
 }
+
+path {
+    fill: none;
+    stroke-opacity: 1.0;
+    stroke-width: 2px;
+}
+
+path.population {
+    stroke: green;
+}
+
+path.birth {
+    stroke: blue;
+}
+
+path.death {
+    stroke: red;
+}
+

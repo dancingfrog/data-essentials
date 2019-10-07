@@ -40,8 +40,8 @@ export default function startD3Demo() {
 
         console.log(rates);
 
-        const minYear = d3.min(rates.map(d => d['Year'] - 100)),
-              maxYear = d3.max(rates.map(d => d['Year']));
+        const minYear = d3.min(rates.map(d => d['Year'] - 50)),
+              maxYear = d3.max(rates.map(d => d['Year'] + 50));
 
         const xRange = [ d3Chart['margin']['left'], d3Chart['width'] - d3Chart['margin']['right'] ];
 
@@ -76,16 +76,16 @@ export default function startD3Demo() {
             .attr("text-anchor", "middle")
             .text("Years (C.E.)");
 
-        const minPop = 0, // d3.min(rates.map(d => d['Population'])),
+        const minPop = d3.min(rates.map(d => d['Population'])),
             maxPop = d3.max(rates.map(d => d['Population']));
 
-        const yRange = [ d3Chart['margin']['top'], d3Chart['height'] - d3Chart['margin']['bottom'] ];
+        const yRange = [ d3Chart['height'] - d3Chart['margin']['bottom'], d3Chart['margin']['top'] ];
 
         console.log([ minPop, maxPop ], yRange);
 
         const yScale = d3.scaleLinear()
             .domain([
-                minPop,
+                0, // minPop
                 maxPop
             ])
             .range(yRange);
@@ -118,6 +118,38 @@ export default function startD3Demo() {
             .attr("text-anchor", "middle")
             .attr("transform", "rotate(-90)")
             .text("Population (millions)");
+
+        const popLine = d3.line()
+            .x(d => xScale(d['Year']))
+            .y(d => yScale(d['Population']))
+            .curve(d3.curveNatural);
+
+        g.append("path")
+            .datum(rates)
+            .attr('class', 'population line')
+            .attr('d', popLine);
+
+        const birthLine = d3.line()
+            .x(d => xScale(d['Year']))
+            .y(d => yScale(((d['CBR']/100) * d['Population']) *
+                2)) // distort for visual calarity
+            .curve(d3.curveNatural);
+
+        g.append("path")
+            .datum(rates)
+            .attr('class', 'birth line')
+            .attr('d', birthLine);
+
+        const deathLine = d3.line()
+            .x(d => xScale(d['Year']))
+            .y(d => yScale(((d['CDR']/100) * d['Population']) *
+                2)) // distort for visual calarity
+            .curve(d3.curveNatural);
+
+        g.append("path")
+            .datum(rates)
+            .attr('class', 'death line')
+            .attr('d', deathLine);
 
         // var circles = this.svg.selectAll("circle")
         //     .data(rates);
