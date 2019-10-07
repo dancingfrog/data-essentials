@@ -148,6 +148,6 @@ export default function startD3Demo() {
             .datum(rates)
             .attr('class', 'death line')
             .attr('d', deathLine);
-        
+
     }, data);
 }
