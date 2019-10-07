@@ -109,24 +109,5 @@ export default function startD3Demo() {
             .attr("transform", "rotate(-90)")
             .text("Height (m)");
 
-        // var circles = this.svg.selectAll("circle")
-        //     .data(rates);
-        //
-        // circles.enter()
-        //     .append("circle")
-        //     .attr("cx", function (d, i) {
-        //         return (i * 100) + 100;
-        //     })
-        //     .attr("cy", 100)
-        //     .attr("r", function (d) {
-        //         return d['CBR'] * 2;
-        //     })
-        //     .attr("fill", function (d) {
-        //         if (d['Year'] === 1900) {
-        //             return 'blue';
-        //         } else {
-        //             return 'red';
-        //         }
-        //     });
     }, data);
 }

@@ -131,8 +131,7 @@ export default function startD3Demo() {
 
         const birthLine = d3.line()
             .x(d => xScale(d['Year']))
-            .y(d => yScale(((d['CBR']/100) * d['Population']) *
-                2)) // distort for visual calarity
+            .y(d => yScale((d['CBR']/100) * maxPop))
             .curve(d3.curveNatural);
 
         g.append("path")
@@ -142,33 +141,13 @@ export default function startD3Demo() {
 
         const deathLine = d3.line()
             .x(d => xScale(d['Year']))
-            .y(d => yScale(((d['CDR']/100) * d['Population']) *
-                2)) // distort for visual calarity
+            .y(d => yScale((d['CDR']/100) * maxPop))
             .curve(d3.curveNatural);
 
         g.append("path")
             .datum(rates)
             .attr('class', 'death line')
             .attr('d', deathLine);
-
-        // var circles = this.svg.selectAll("circle")
-        //     .data(rates);
-        //
-        // circles.enter()
-        //     .append("circle")
-        //     .attr("cx", function (d, i) {
-        //         return (i * 100) + 100;
-        //     })
-        //     .attr("cy", 100)
-        //     .attr("r", function (d) {
-        //         return d['CBR'] * 2;
-        //     })
-        //     .attr("fill", function (d) {
-        //         if (d['Year'] === 1900) {
-        //             return 'blue';
-        //         } else {
-        //             return 'red';
-        //         }
-        //     });
+        
     }, data);
 }
