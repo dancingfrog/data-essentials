@@ -3,7 +3,6 @@ import createChart from './chart-factory';
 
 export default function startD3Demo() {
     /*
-     *    main.js
      *    Mastering Data Visualization with D3.js
      *    2.6 - Selections and data joins
      */

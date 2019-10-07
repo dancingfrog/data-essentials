@@ -20,11 +20,12 @@ conda install --force-reinstall -y cython cartopy matplotlib pandas geopandas ko
 conda install -y ipykernel
 python -m ipykernel install
 python -m ipykernel install --user
+# Python jupyter kernel
+conda install -c conda-forge python-language-server
+#python -m pip install 'python-language-server[all]'
 # Markdown jupyter kernel
 python -m pip install markdown-kernel
 python -m markdown_kernel.install
-# Python jupyter kernel
-python -m pip install 'python-language-server[all]'
 # R jupyter kernel
 Rscript -e 'install.packages("languageserver")'
 Rscript -e 'install.packages("IRkernel")'

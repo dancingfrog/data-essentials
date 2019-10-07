@@ -2,6 +2,13 @@ import * as d3 from 'd3';
 import { BaseType, Selection } from 'd3';
 
 export default function createChart (options?, svg?: Selection<BaseType, {}, HTMLElement, any>) {
+    const defaultMargin = {
+        top: 20,
+        right: 20,
+        bottom: 20,
+        left: 20
+    };
+
     const chart = Object.assign(
         {},
         {
@@ -17,6 +24,16 @@ export default function createChart (options?, svg?: Selection<BaseType, {}, HTM
         options || {}
     );
 
+    chart['margin'] = {}
+
+    for (const p in defaultMargin) {
+        if (!!defaultMargin[p]) {
+            chart['margin'][p] = defaultMargin[p];
+        }
+    }
+
+    console.log(defaultMargin)
+
     if (!!options) {
         chart['options'] = options;
 
@@ -30,7 +47,13 @@ export default function createChart (options?, svg?: Selection<BaseType, {}, HTM
                         chart['height'] = options['height'];
                         break;
                     case 'margin':
-                        chart['margin'] = options['margin'];
+                        if (
+                            !!options['margin']['top'] ||
+                            !!options['margin']['bottom'] ||
+                            !!options['margin']['left'] ||
+                            !!options['margin']['right']
+                        )
+                            chart['margin'] = options['margin'];
                         break;
                     default:
                         chart[p] = options[p];
@@ -58,11 +81,11 @@ export default function createChart (options?, svg?: Selection<BaseType, {}, HTM
     })();
 
     (<any>chart).render = (renderFunction, data, clickFn = () => {}) => {
-        
+
         if (!!data) {
             console.log(data);
             renderFunction.apply(chart, [data, clickFn]);
-            
+
         } else {
             renderFunction.apply(chart)
         }
