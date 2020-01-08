@@ -1,8 +1,11 @@
 unset PYTHONPATH
 
 conda update -y -c defaults conda
+conda install --force-reinstall -y conda-build
 #conda install -f -y -q -n py37 -c conda-forge --file requirements.txt
-#conda install --force-reinstall -y conda-build
+
+# Install Python modules
+conda install --force-reinstall -y cython cartopy matplotlib pandas geopandas koalas 'pyspark>=2.4' notebook -c conda-forge
 
 # Install R
 #conda update -y -c rdonnellyr -c main --all
@@ -12,24 +15,7 @@ conda update -y -c defaults conda
 export rprofile="$(echo $(r  -f example.r  | grep '/Rprofile') | grep -o '[A-Z|a-z|\/][A-Z|a-z|0-9|\:|\/|\.|\_]*')"
 bash -c "echo 'options(repos = list(CRAN=\"http://cran.rstudio.com/\"))' >> $rprofile" || sudo bash -c "echo 'options(repos = list(CRAN=\"http://cran.rstudio.com/\"))' >> $rprofile"
 Rscript -e 'update.packages(repos="http://cran.rstudio.com/", ask=FALSE, checkBuilt=TRUE)'
-
-# Extra modules
-conda install --force-reinstall -y cython cartopy matplotlib pandas geopandas koalas 'pyspark>=2.4' notebook -c conda-forge
-
-# IPython/Jupyter
-conda install -y ipykernel
-python -m ipykernel install
-python -m ipykernel install --user
-# Python jupyter kernel
-conda install -c conda-forge python-language-server
-#python -m pip install 'python-language-server[all]'
-# Markdown jupyter kernel
-python -m pip install markdown-kernel
-python -m markdown_kernel.install
-# R jupyter kernel
-Rscript -e 'install.packages("languageserver")'
-Rscript -e 'install.packages("IRkernel")'
-Rscript -e 'IRkernel::installspec()'
+# Install R packages
 Rscript -e 'install.packages("DBI")'
 Rscript -e 'install.packages("RPostgreSQL")'
 Rscript -e 'install.packages("ggmap")'
@@ -47,4 +33,19 @@ Rscript -e 'install.packages("sp")'
 Rscript -e 'install.packages("rgdal")'
 # During install on OS X, Ctrl+Z, then: install_name_tool -add_rpath /usr/lib /usr/local/lib/R/3.6/site-library/00LOCK-rgeos/00new/rgeos/libs/rgeos.so && fg
 Rscript -e 'install.packages("rgeos")'
+
+# IPython/Jupyter
+conda install -y ipykernel
+python -m ipykernel install
+python -m ipykernel install --user
+# Python jupyter kernel
+conda install -c conda-forge python-language-server
+#python -m pip install 'python-language-server[all]'
+# Markdown jupyter kernel
+python -m pip install markdown-kernel
+python -m markdown_kernel.install
+# R jupyter kernel
+Rscript -e 'install.packages("languageserver")'
+Rscript -e 'install.packages("IRkernel")'
+Rscript -e 'IRkernel::installspec()'
 jupyter kernelspec list
