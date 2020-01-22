@@ -4,6 +4,10 @@ conda update -y -c defaults conda
 conda install --force-reinstall -y conda-build
 #conda install -f -y -q -n py37 -c conda-forge --file requirements.txt
 
+# Install NodeJS & NPM
+conda install -c conda-forge nodejs
+
+
 # Install Python modules
 conda install --force-reinstall -y cython cartopy matplotlib pandas geopandas koalas 'pyspark>=2.4' notebook -c conda-forge
 
@@ -44,6 +48,8 @@ conda install -c conda-forge python-language-server
 # Markdown jupyter kernel
 python -m pip install markdown-kernel
 python -m markdown_kernel.install
+# NodeJS Kernel
+npm install -g ijavascript
 # R jupyter kernel
 Rscript -e 'install.packages("languageserver")'
 Rscript -e 'install.packages("IRkernel")'
