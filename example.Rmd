@@ -1,0 +1,57 @@
+---
+title: "TryRPython"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+if (!require("knitr")) {
+  install.packages("knitr")
+  library("knitr")
+}
+knitr::opts_chunk$set(echo = TRUE)
+if (!require("reticulate")) {
+  install.packages("reticulate")
+}
+library(reticulate)
+```
+
+```{python data_test}
+data = {"foo": {"bar": "baz"}}
+string = "Hydrogen"
+
+for index, letter in enumerate(string):
+    print((letter, index))
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{python plot}
+try:
+  import matplotlib.pyplot as plt
+  import numpy as np
+
+  # %matplotlib inline
+  # %config InlineBackend.figure_format = 'svg'
+  t = np.linspace(0, 20, 500)
+
+  plt.plot(t, np.sin(t))
+  plt.show()
+except Exception as e:
+  print(e)
+```
