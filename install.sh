@@ -9,7 +9,7 @@ conda install -c conda-forge nodejs
 
 
 # Install Python modules
-conda install --force-reinstall -y cython cartopy matplotlib pandas geopandas koalas 'pyspark>=2.4' notebook ptvsd -c conda-forge
+conda install --force-reinstall -y cython cartopy flask matplotlib pandas geopandas koalas 'pyspark>=2.4' notebook ptvsd -c conda-forge
 
 # Install R
 #conda update -y -c rdonnellyr -c main --all
