@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import createChart from '../../../../data.essentials/demo/modules/basic/chart-factory';
+import createChart from '../basic/chart-factory';
 import { map } from "rxjs/operators";
 import { fromPromise } from "rxjs/internal-compatibility";
 
