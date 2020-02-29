@@ -17,14 +17,6 @@ if (!require("reticulate")) {
 library(reticulate)
 ```
 
-```{python data_test}
-data = {"foo": {"bar": "baz"}}
-string = "Hydrogen"
-
-for index, letter in enumerate(string):
-    print((letter, index))
-```
-
 ## R Markdown
 
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
@@ -40,6 +32,24 @@ plot(pressure)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+If the output target is HTML, R has some methods for turning R data into JavaScript or JSON data and printing the results within HTML tags:
+```{r data_in_html, echo=FALSE, results='asis'}
+head(mtcars)
+
+cat(paste('<script id="data_in_html" type="application/json">', toJSON(mtcars), '</script>', sep=""))
+```
+
+In RStudio it is also possible to include Python code chunks in R Markdown, using the `reticulate` package that was loaded (in R) earlier:
+
+```{python data_test}
+data = {"foo": {"bar": "baz"}}
+string = "Hydrogen"
+
+for index, letter in enumerate(string):
+    print((letter, index))
+```
+
 
 ```{python plot}
 try:
