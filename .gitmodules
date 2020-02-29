@@ -4,3 +4,6 @@
 [submodule "minikube"]
 	path = minikube
 	url = git@github.com:Real-Currents/minikube.git
+[submodule "sql-server-with-r"]
+	path = sql-server-with-r
+	url = git@github.com:dancingfrog/sql-server-with-r.git

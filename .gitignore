@@ -1,7 +1,9 @@
+.cph_*
 .DS_Store
 .RData
 .Rhistory
-.cph_*
+.Rproj.user
+*.Rproj
 app.js
 index.html
 data
