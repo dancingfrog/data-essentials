@@ -21,6 +21,8 @@ bash -c "echo 'options(repos = list(CRAN=\"http://cran.rstudio.com/\"))' >> $rpr
 Rscript -e 'update.packages(repos="http://cran.rstudio.com/", ask=FALSE, checkBuilt=TRUE)'
 # Install R packages
 Rscript -e 'install.packages("DBI")'
+# During install on OS X, Ctrl+Z, then (either): install_name_tool -add_rpath /usr/lib /usr/local/lib/R/3.6/site-library/00LOCK-sf/00new/RPostgreSQL/libs/RPostgreSQL.so && fg
+# (... or): install_name_tool -add_rpath /usr/lib /Library/Frameworks/R.framework/Versions/3.5.1-MRO/Resources/library/RPostgreSQL/libs/RPostgreSQL.so && fg
 Rscript -e 'install.packages("RPostgreSQL")'
 Rscript -e 'install.packages("ggmap")'
 Rscript -e 'install.packages("lattice")'
@@ -29,13 +31,13 @@ Rscript -e 'install.packages("maps")'
 Rscript -e 'install.packages("mapdata")'
 Rscript -e 'install.packages("marmap")'
 Rscript -e 'install.packages("raster")'
-# During install on OS X, Ctrl+Z, then: install_name_tool -add_rpath /usr/lib /usr/local/lib/R/3.6/site-library/00LOCK-sf/00new/sf/libs/sf.so && fg
+# During install on OS X, Ctrl+Z, then (either/or... see above): install_name_tool -add_rpath /usr/lib /Library/Frameworks/R.framework/Versions/3.5.1-MRO/Resources/library/sf/libs/sf.so && fg
 Rscript -e 'install.packages("sf")'
-# During install on OS X, Ctrl+Z, then: install_name_tool -add_rpath /usr/lib /usr/local/lib/R/3.6/site-library/00LOCK-png/00new/png/libs/png.so && fg
+# During install on OS X, Ctrl+Z, then (either/or... see above): install_name_tool -add_rpath /usr/lib /Library/Frameworks/R.framework/Versions/3.5.1-MRO/Resources/library/png/libs/png.so && fg
 Rscript -e 'install.packages("sp")'
-# During install on OS X, Ctrl+Z, then: install_name_tool -add_rpath /usr/lib /usr/local/lib/R/3.6/site-library/00LOCK-rgdal/00new/rgdal/libs/rgdal.so && fg
+# During install on OS X, Ctrl+Z, then (either/or... see above): install_name_tool -add_rpath /usr/lib /Library/Frameworks/R.framework/Versions/3.5.1-MRO/Resources/library/rgdal/libs/rgdal.so && fg
 Rscript -e 'install.packages("rgdal")'
-# During install on OS X, Ctrl+Z, then: install_name_tool -add_rpath /usr/lib /usr/local/lib/R/3.6/site-library/00LOCK-rgeos/00new/rgeos/libs/rgeos.so && fg
+# During install on OS X, Ctrl+Z, then (either/or... see above): install_name_tool -add_rpath /usr/lib /Library/Frameworks/R.framework/Versions/3.5.1-MRO/Resources/library/rgeos/libs/rgeos.so && fg
 Rscript -e 'install.packages("rgeos")'
 
 # IPython/Jupyter

@@ -34,10 +34,14 @@ plot(pressure)
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
 If the output target is HTML, R has some methods for turning R data into JavaScript or JSON data and printing the results within HTML tags:
-```{r data_in_html, echo=FALSE, results='asis'}
-head(mtcars)
+```{r car_data}
 
-cat(paste('<script id="data_in_html" type="application/json">', toJSON(mtcars), '</script>', sep=""))
+head(mtcars)
+```
+```{r car_data_in_html, echo=FALSE, results='asis'}
+library(jsonlite)
+
+cat(paste('<div id="car_data_in_html"><script type="application/json">', toJSON(mtcars), '\n</script>\n</div>', sep=""))
 ```
 
 In RStudio it is also possible to include Python code chunks in R Markdown, using the `reticulate` package that was loaded (in R) earlier:
@@ -64,4 +68,32 @@ try:
   plt.show()
 except Exception as e:
   print(e)
+```
+
+```{r map}
+
+library(DBI)
+library(RPostgreSQL)
+library(sp)
+options(warn=-1)  # versions of GEOS runtime 3.7.2-CAPI-1.11.2 and GEOS at installation 3.7.1-CAPI-1.11.1 differ
+library(rgdal)
+library(rgeos)
+library(sf)
+library(maptools)
+options(warn=0)
+
+data(wrld_simpl)
+xlim <- c(-130,-60)
+ylim <- c(35,50)
+plot(wrld_simpl,xlim=xlim,ylim=ylim,col='olivedrab3',bg='lightblue') 
+plot(wrld_simpl)
+coords <- matrix(c(-122.92,-79.4, 49.277,43.66),ncol=2)
+
+coords <- matrix(c(-122.92,-79.4, 49.277,43.66),ncol=2)
+coords <- coordinates(coords)
+spoints <- SpatialPoints(coords)
+df <- data.frame(location=c("SFU","UofT"))
+spointsdf <- SpatialPointsDataFrame(spoints,df)
+plot(wrld_simpl) + plot(spointsdf,add=T,col=c('red','blue'),pch=16)
+
 ```
