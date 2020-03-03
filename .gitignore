@@ -1,4 +1,5 @@
 .cph_*
+.idea
 .DS_Store
 .RData
 .Rhistory
