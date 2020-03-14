@@ -1,0 +1,21 @@
+---
+title: 'R Programming: The basics of programming in R'
+author: "Swirl"
+date: "3/13/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+if (!require("swirl")) {
+    install.packages("swirl")
+    library("swirl")
+}
+rm(list=ls())
+```
+
+## R Programming: The basics of programming in R
+```{r install_course}
+install_course("R Programming")
+swirl()
+```
