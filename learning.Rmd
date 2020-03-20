@@ -98,3 +98,41 @@ sample(die, size = 1 )# size = 1 roll
 
 sample(die, size = 2) # size = 2 rolls
 ```
+
+Use a data frame to store a deck of cards:
+```{r cards}
+# First, try a list as a card model
+card <- list("ace", "hearts", 1) # list is like a single column from a table
+str(card)
+typeof(card)
+class(card)
+is.list(card) # card is a list
+is.vector(card) # card is also a vector
+
+# Now create a three card hand with a data.frame
+hand <- data.frame(
+    face = c("ace",
+             "two",
+             "six"),       # column 1
+    suit = c("clubs",
+             "hearts",
+             "spades"),    # column 2
+    value = c(1,
+              2,
+              3),          # column 3
+    stringsAsFactors = FALSE
+)
+str(hand)
+typeof(hand) # hand is a type of list...
+class(hand) # ... of class data.frame
+is.data.frame(hand) # hand is a data.frame
+is.list(hand) # hand is also a list
+is.vector(hand) # hand is *not* a vector
+
+# Now create a deck by reading a csv from the web
+deck <- read.csv("https://gist.githubusercontent.com/garrettgman/9629323/raw/ee5dfc039fd581cb467cc69c226ea2524913c3d8/deck.csv", sep = ",", na.strings = "NA", strip.white = TRUE, stringsAsFactors = FALSE)
+str(deck)
+typeof(deck)
+class(deck)
+is.data.frame(deck)
+```
