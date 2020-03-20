@@ -46,6 +46,10 @@ Rscript -e 'install.packages("sf")'
 # During install on OS X, Ctrl+Z, then (either/or... see above): install_name_tool -add_rpath /usr/lib /Library/Frameworks/R.framework/Versions/3.5.1-MRO/Resources/library/png/libs/png.so && fg
 Rscript -e 'install.packages("sp")'
 # During install on OS X, Ctrl+Z, then (either/or... see above): install_name_tool -add_rpath /usr/lib /Library/Frameworks/R.framework/Versions/3.5.1-MRO/Resources/library/rgdal/libs/rgdal.so && fg
+echo "Ready to build package rgdal..."
+echo $PROJ_CPPFLAGS
+echo $PROJ_LDFLAGS
+sleep 30
 Rscript -e 'install.packages("rgdal")'
 # During install on OS X, Ctrl+Z, then (either/or... see above): install_name_tool -add_rpath /usr/lib /Library/Frameworks/R.framework/Versions/3.5.1-MRO/Resources/library/rgeos/libs/rgeos.so && fg
 Rscript -e 'install.packages("rgeos")'

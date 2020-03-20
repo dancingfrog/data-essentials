@@ -1,2 +1,2 @@
-CFLAGS =  -DACCEPT_USE_OF_DEPRECATED_PROJ_API_H=1 -Wno-error=stringop-truncation
-CXXFLAGS = -DACCEPT_USE_OF_DEPRECATED_PROJ_API_H=1 -Wno-error=stringop-truncation
+CFLAGS = "-DACCEPT_USE_OF_DEPRECATED_PROJ_API_H=1 -Wno-error=stringop-truncation"
+CXXFLAGS = "-DACCEPT_USE_OF_DEPRECATED_PROJ_API_H=1 -Wno-error=stringop-truncation"
