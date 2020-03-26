@@ -49,6 +49,9 @@ sum(c(1, 2.5, 3, 4, 4.5))
 Create an object named `die` that contains the numbers 1 through 6:
 ```{r}
 die <- 1:6
+typeof(die)
+class(die)
+is.vector(die)
 
 # List object names in current R environment
 ls()
@@ -130,9 +133,73 @@ is.list(hand) # hand is also a list
 is.vector(hand) # hand is *not* a vector
 
 # Now create a deck by reading a csv from the web
-deck <- read.csv("https://gist.githubusercontent.com/garrettgman/9629323/raw/ee5dfc039fd581cb467cc69c226ea2524913c3d8/deck.csv", sep = ",", na.strings = "NA", strip.white = TRUE, stringsAsFactors = FALSE)
-str(deck)
+deck <- data.frame()
+deck_loaded <- tryCatch({
+    deck <- read.csv("https://gist.githubusercontent.com/garrettgman/9629323/raw/ee5dfc039fd581cb467cc69c226ea2524913c3d8/deck.csv", sep = ",", na.strings = "NA", strip.white = TRUE, stringsAsFactors = FALSE)
+
+}, error = function (e) {
+    print(e) # store error in "message"
+
+}, finally = {})
+
+# print(names(deck_loaded))
+
+if (any(grepl("message", names(deck_loaded)))) {
+    print("Load deck from local file")
+    deck_file <- "data/deck.csv"
+    if (!file.exists("data/deck.csv")) {
+        deck_file <- file.choose()
+    }
+    deck <- read.csv(deck_file, sep = ",", na.strings = "NA", strip.white = TRUE, stringsAsFactors = FALSE)
+    str(deck)
+}
 typeof(deck)
 class(deck)
 is.data.frame(deck)
+```
+
+### R Indices
+
+R has a realy wierd notation for indexing elements. First off, the first element is enumerated by the number 1, instead of 0:
+```{r deck}
+print(deck)
+## 1   king   spades    13
+## 2  queen   spades    12
+## 3   jack   spades    11
+## ...
+print(deck[1, c(1, 2, 3)])
+## 1   king   spades    13
+
+length(deck) # for each row in deck, return number of *columns*
+length(deck[, 1]) # return number of rows in deck
+
+print(deck[1]) # for each row, return a vector cotaining first column and add to data.frame
+typeof(deck[1])
+class(deck[1]) # data.frame
+
+print(deck[, 1]) # creates single vector, cotaining first column for every row
+typeof(deck[, 1])
+class(deck[, 1])
+is.vector(deck[, 1])
+
+print(deck[1, 1]) # creates vector containing first column of first row
+typeof(deck[1, 1])
+class(deck[1, 1])
+is.vector(deck[1, 1])
+
+print(deck[c(1, 2, 3), 1]) # creates vector containing first column of rows 1, 2, and 3
+typeof(deck[c(1, 2, 3), 1])
+class(deck[c(1, 2, 3), 1])
+is.vector(deck[c(1, 2, 3), 1])
+
+print(deck[c(1:length(deck[,1])), 1]) # creates vector containing first column of revery row
+typeof(deck[c(1:length(deck[,1])), 1])
+class(deck[c(1:length(deck[,1])), 1])
+is.vector(deck[c(1:length(deck[,1])), 1])
+
+print(deck[c(1:length(deck[,1])), c(1:length(deck))]) # for each row, return a vector containing every column of revery row and add to data.frame
+typeof(deck[c(1:length(deck[,1])), c(1:length(deck))])
+class(deck[c(1:length(deck[,1])), c(1:length(deck))])
+
+
 ```
