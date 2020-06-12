@@ -26,7 +26,7 @@ pip install aws-sam-cli
 # Update R profile
 export rprofile="$(echo $(R  -f setup.R  | grep '/Rprofile') | grep -o '[A-Z|a-z|\/][A-Z|a-z|0-9|\:|\/|\.|\_]*')"
 echo $rprofile
-echo $(for rp in $rprofile; do echo 'options(repos = list(CRAN="http://cran.rstudio.com/"))' >> $rp; done;) || sudo echo $(for rp in $rprofile; do echo 'options(repos = list(CRAN="http://cran.rstudio.com/"))' >> $rp; done;)
+echo $(for rp in $rprofile; do echo 'options(repos = list(CRAN="http://cran.rstudio.com/", getOption("repos")))' >> $rp; done;) || sudo echo $(for rp in $rprofile; do echo 'options(repos = list(CRAN="http://cran.rstudio.com/"))' >> $rp; done;)
 Rscript -e 'update.packages(repos="http://cran.rstudio.com/", ask=FALSE, checkBuilt=TRUE)'
 sleep 10
 # Install R packages
