@@ -57,18 +57,18 @@ Rscript -e 'install.packages("rgeos")'
 
 # IPython/Jupyter
 conda install -y ipykernel
-#python -m ipykernel install
-#python -m ipykernel install --user
+python -m ipykernel install
+python -m ipykernel install --user
 # Python jupyter kernel
 conda install -y -c conda-forge python-language-server
-#python -m pip install 'python-language-server[all]'
+python -m pip install 'python-language-server[all]'
 # Markdown jupyter kernel
 python -m pip install markdown-kernel
 python -m markdown_kernel.install
 # NodeJS Kernel
 npm install -g ijavascript
 # R jupyter kernel
-Rscript -e 'install.packages("languageserver")'
-Rscript -e 'install.packages("IRkernel")'
+Rscript -e 'install.packages("languageserver", repos="http://cran.rstudio.com/", ask=FALSE, checkBuilt=TRUE)'
+Rscript -e 'install.packages("IRkernel", repos="http://cran.rstudio.com/", ask=FALSE, checkBuilt=TRUE)'
 Rscript -e 'IRkernel::installspec()'
 jupyter kernelspec list
