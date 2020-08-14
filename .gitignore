@@ -1,11 +1,11 @@
 .cph_*
 .idea
 .DS_Store
-.RData
+*.RData*
 .Rhistory
 .Rproj.user
 *.Rproj
-app.js
+app.jsn
 index.html
 data
 docker-*
