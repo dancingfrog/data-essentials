@@ -7,3 +7,6 @@
 [submodule "sql-server-with-r"]
 	path = sql-server-with-r
 	url = git@github.com:dancingfrog/sql-server-with-r.git
+[submodule "edX/Principles-of-Machine-Learning-R"]
+	path = edX/Principles-of-Machine-Learning-R
+	url = git@github.com:dancingfrog/Principles-of-Machine-Learning-R.git
