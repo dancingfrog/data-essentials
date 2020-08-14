@@ -1,5 +1,6 @@
 .cph_*
 .idea
+.ipynb_checkpoints
 .DS_Store
 *.RData*
 .Rhistory
