@@ -10,3 +10,6 @@
 [submodule "edX/Principles-of-Machine-Learning-R"]
 	path = edX/Principles-of-Machine-Learning-R
 	url = git@github.com:dancingfrog/Principles-of-Machine-Learning-R.git
+[submodule "osu/CPDA-AU20"]
+	path = osu/CPDA-AU20
+	url = git@bitbucket.org:Real-Currents/cpda-au20.git

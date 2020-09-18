@@ -8,10 +8,12 @@
 *.Rproj
 app.jsn
 index.html
+edX
 data
 dist
 docker-*
 hadoop
 node_modules
+osu
 protobuf
 udemy
